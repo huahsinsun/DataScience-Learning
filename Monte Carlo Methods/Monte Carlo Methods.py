@@ -1,22 +1,17 @@
-"""计算圆周率"""
+# """计算圆周率"""
 import numpy as np
 import matplotlib.pyplot as plt
-from mpmath import sqrtm
-import math
 
 
-def estimate_pi(n_points):
+
+
+def simulation_pi(n_points):
     x = np.random.uniform(0,1,n_points)
     y = np.random.uniform(0,1,n_points)
-    scaler_square = 1
-    points = zip(x,y)
-    add_temp = 0
-    for point in points:
-        if math.sqrt((point[0]-0.5)**2+(point[1]-0.5)**2)<=0.5:
-            add_temp += 1
-    scaler = add_temp/n_points
-    print(scaler*scaler_square)
+    distance = lambda x,y:np.sqrt((x-0.5)**2+(y-0.5)**2)<=0.5
+    z = distance(x,y)
+    add_temp = np.count_nonzero(z)
+    pi = add_temp/n_points*4
+    print(pi)
 
-
-
-estimate_pi(20000)
+simulation_pi(2000000)
