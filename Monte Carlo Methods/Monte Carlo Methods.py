@@ -2,9 +2,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
-
-
 def simulation_pi(n_points):
     x = np.random.uniform(0,1,n_points)
     y = np.random.uniform(0,1,n_points)
